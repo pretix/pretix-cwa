@@ -1,0 +1,27 @@
+{% load compress %}
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CWA</title>
+    {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static "pretix_cwa/signage.scss" %}"/>
+    {% endcompress %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="main">
+    <div class="head">
+        <h1>{% trans "Check in using Corona Warn App" %}</h1>
+    </div>
+    <div class="qr">
+        {{ svg|safe }}
+    </div>
+    <div class="meta">
+        {{ event.name }}<br>
+        {{ df|date:"SHORT_DATETIME_FORMAT" }} – {{ dt|date:"SHORT_DATETIME_FORMAT" }}
+    </div>
+</div>
+</body>
+</html>

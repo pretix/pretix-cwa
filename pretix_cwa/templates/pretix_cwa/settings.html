@@ -1,0 +1,126 @@
+{% extends "pretixcontrol/event/settings_base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block inside %}
+    <h1>{% trans "CWA integration" %}</h1>
+    <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+        {% bootstrap_form_errors form %}
+        {% csrf_token %}
+        <fieldset>
+            <legend>{% trans "QR code content" %}</legend>
+            {% bootstrap_field form.cwa_mode layout="control" %}
+            {% bootstrap_field form.cwa_location_type layout="control" %}
+            {% bootstrap_field form.cwa_default_length layout="control" %}
+        </fieldset>
+        <fieldset>
+            <legend>{% trans "Reminder email" %}</legend>
+            {% bootstrap_field form.cwa_checkin_email layout="control" %}
+            {% bootstrap_field form.cwa_checkin_email_subject layout="control" %}
+            {% bootstrap_field form.cwa_checkin_email_body layout="control" %}
+        </fieldset>
+        <fieldset>
+            <legend>{% trans "(Digital) signage" %}</legend>
+            <div class="alert alert-warning">
+                {% blocktrans trimmed %}
+                    The following links will always point to the currently valid QR code, which changes at least once a
+                    day (or more often, if configured above). Please do not share these URLs with your visitors to avoid
+                    abuse, but use them to print out the daily QR code or display it on a screen in your venue!
+                {% endblocktrans %}
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">{% trans "QR code as a web site" %}</label>
+                <div class="col-md-5">
+                    <input class="form-control" readonly="readonly" type="text" id="url_html"
+                           value="{{ url_html }}">
+                    <div class="help-block">
+                        {% blocktrans trimmed %}
+                            Use this link to dynamically show the current QR code on a screen. You can also easily print
+                            it using the print button in your browser!
+                        {% endblocktrans %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-block btn-clipboard" data-clipboard-target="#url_html">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                        <span class="hidden-md">
+                        {% trans "Copy" %}
+                    </span>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ url_html }}" target="_blank" class="btn btn-default btn-block">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <span class="hidden-md">
+                        {% trans "Preview" %}
+                    </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">{% trans "QR code as a PNG image" %}</label>
+                <div class="col-md-5">
+                    <input class="form-control" readonly="readonly" type="text" id="url_png"
+                           value="{{ url_png }}">
+                    <div class="help-block">
+                        {% blocktrans trimmed %}
+                            Use this link to dynamically embed the QR code into a digital signage system.
+                        {% endblocktrans %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-block btn-clipboard" data-clipboard-target="#url_png">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                        <span class="hidden-md">
+                        {% trans "Copy" %}
+                    </span>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ url_png }}" target="_blank" class="btn btn-default btn-block">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <span class="hidden-md">
+                        {% trans "Preview" %}
+                    </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">{% trans "QR code as a SVG image" %}</label>
+                <div class="col-md-5">
+                    <input class="form-control" readonly="readonly" type="text" id="url_svg"
+                           value="{{ url_svg }}">
+                    <div class="help-block">
+                        {% blocktrans trimmed %}
+                            Use this link to dynamically embed the QR code into a digital signage system.
+                        {% endblocktrans %}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default btn-block btn-clipboard" data-clipboard-target="#url_svg">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                        <span class="hidden-md">
+                        {% trans "Copy" %}
+                    </span>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ url_svg }}" target="_blank" class="btn btn-default btn-block">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <span class="hidden-md">
+                        {% trans "Preview" %}
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group submit-group">
+            <button type="submit" class="btn btn-primary btn-save">
+                {% trans "Save" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,41 @@
+body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+#main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .qr {
+    flex: auto 1 1;
+    svg {
+      height: 100%;
+      max-width: 100%;
+      width: auto;
+    }
+  }
+  .head, .meta {
+    flex: auto 0 0;
+  }
+  .head {
+    padding: 4vh 2vw 2vh;
+    h1 {
+      font-size: 5vh;
+      margin: 0
+    }
+  }
+  .meta {
+    font-size: 1.5vh;
+    padding: 2vh 2vw 4vh;
+    line-height: 1.5;
+  }
+}
+
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0 auto;  /* this affects the margin in the printer settings */
+}
