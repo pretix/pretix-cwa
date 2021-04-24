@@ -46,7 +46,7 @@ class CWASettingsForm(SettingsForm):
     )
 
     cwa_checkin_email = forms.BooleanField(
-        label=_("Send email with check-in link after check-in scan"),
+        label=_("Send email with CWA check-in link after ticket check-in scan"),
         required=False,
     )
 
