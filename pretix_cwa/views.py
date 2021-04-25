@@ -14,7 +14,7 @@ from django.views import View
 from django.views.generic import TemplateView
 from pretix.base.models import Event
 from pretix.control.views.event import EventSettingsFormView, EventSettingsViewMixin
-from pretix.multidomain.urlreverse import eventreverse
+from pretix.multidomain.urlreverse import build_absolute_uri
 
 from .forms import CWASettingsForm
 from .generator import generate_url
@@ -44,17 +44,17 @@ class SettingsView(EventSettingsViewMixin, EventSettingsFormView):
                 f"{settings.SECRET_KEY}:pretix_cwa:signage:{self.request.event.pk}"
             ).encode()
         ).hexdigest()[:16]
-        ctx["url_png"] = eventreverse(
+        ctx["url_png"] = build_absolute_uri(
             self.request.event,
             "plugins:pretix_cwa:signage.png",
             kwargs={"token": token},
         )
-        ctx["url_svg"] = eventreverse(
+        ctx["url_svg"] = build_absolute_uri(
             self.request.event,
             "plugins:pretix_cwa:signage.svg",
             kwargs={"token": token},
         )
-        ctx["url_html"] = eventreverse(
+        ctx["url_html"] = build_absolute_uri(
             self.request.event,
             "plugins:pretix_cwa:signage.html",
             kwargs={"token": token},
