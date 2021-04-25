@@ -147,4 +147,6 @@ class SignageHTMLView(SignageMixin, TemplateView):
         ctx["df"] = df
         ctx["dt"] = dt
 
+        ctx["refresh"] = max(min((dt - now()).seconds - 60, 600), 15)
+
         return ctx
