@@ -1,8 +1,7 @@
+import cwa_qr
 import hashlib
 import re
 from datetime import timedelta
-
-import cwa_qr
 from django.conf import settings
 from pretix.base.models import Event, SubEvent
 from pytz import UTC
