@@ -34,7 +34,7 @@ setup(
     author="pretix team",
     author_email="support@pretix.eu",
     license="Apache",
-    install_requires=["qrcode"],
+    install_requires=["qrcode", "cwa-qr"],
     packages=find_packages(exclude=["tests", "tests.*"]),
     include_package_data=True,
     cmdclass=cmdclass,

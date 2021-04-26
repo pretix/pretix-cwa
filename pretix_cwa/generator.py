@@ -1,11 +1,11 @@
 import hashlib
 import re
 from datetime import timedelta
+
+import cwa_qr
 from django.conf import settings
 from pretix.base.models import Event, SubEvent
 from pytz import UTC
-
-from pretix_cwa import cwa
 
 
 def clean_address(a):
@@ -16,12 +16,12 @@ def clean_address(a):
 
 def generate_url(event: Event, subevent: SubEvent = None):
     ev = subevent or event
-    event_description = cwa.CwaEventDescription()
-    event_description.locationDescription = str(ev.name)[:100]
-    event_description.locationAddress = clean_address(
+    event_description = cwa_qr.CwaEventDescription()
+    event_description.location_description = str(ev.name)[:100]
+    event_description.location_address = clean_address(
         str(ev.location) or str(event.location) or str(event.name) or ""
     )[:100]
-    event_description.locationType = int(ev.settings.cwa_location_type)
+    event_description.location_type = int(ev.settings.cwa_location_type)
 
     default_length = ev.settings.cwa_default_length
 
@@ -83,7 +83,7 @@ def generate_url(event: Event, subevent: SubEvent = None):
     if default_length is None:
         default_length = 4 * 60  # no idea how long events are, fall back to 4h
 
-    event_description.randomSeed = hashlib.sha256(
+    event_description.seed = hashlib.sha256(
         ":".join(
             [
                 settings.SECRET_KEY,
@@ -94,7 +94,7 @@ def generate_url(event: Event, subevent: SubEvent = None):
             ]
         ).encode()
     ).digest()[:16]
-    event_description.startDateTime = date_from.astimezone(UTC)
-    event_description.endDateTime = date_to.astimezone(UTC)
-    event_description.defaultCheckInLengthInMinutes = default_length
-    return cwa.generateUrl(event_description), date_from, date_to
+    event_description.start_date_time = date_from.astimezone(UTC)
+    event_description.end_date_time = date_to.astimezone(UTC)
+    event_description.default_check_in_length_in_minutes = default_length
+    return cwa_qr.generate_url(event_description), date_from, date_to
