@@ -3,6 +3,50 @@ body {
   padding: 0;
   margin: 0;
 }
+
+#main.portrait {
+  background-image: url(static('pretix_cwa/poster_portrait.svg'));
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  .qr {
+    flex: auto 1 1;
+    position: relative;
+    top: 9%;
+    svg {
+      height: 49%;
+      max-width: 49%;
+      width: auto;
+    }
+  }
+  .head, .meta {
+    display: none;
+  }
+}
+
+#main.landscape {
+  background-image: url(static('pretix_cwa/poster_landscape.svg'));
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  .qr {
+    flex: auto 1 1;
+    position: relative;
+    top: 22%;
+    left: -26%;
+    svg {
+      height: 55%;
+      max-width: 55%;
+      width: auto;
+    }
+  }
+  .head, .meta {
+    display: none;
+  }
+}
+
 #main {
   width: 100vw;
   height: 100vh;
