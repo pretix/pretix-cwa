@@ -53,7 +53,7 @@ def generate_url(event: Event, subevent: SubEvent = None):
                             se["date_from"] - subevents_today[i - 1]["date_from"]
                         )
                 if lengths:
-                    length = sum(lengths) / len(lengths)
+                    length = sum(lengths, timedelta(hours=0)) / len(lengths)
                 else:
                     length = timedelta(hours=4)
 
