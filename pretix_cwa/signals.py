@@ -53,7 +53,7 @@ def base_placeholders(sender, **kwargs):
             "cwa_url",
             ["event", "position"],
             lambda event, position: generate_url(event, position.subevent)[0],
-            lambda event, position: generate_url(event, position.subevent)[0],
+            lambda event: generate_url(event, event.subevents.first())[0],
         ),
     ]
     return ph
