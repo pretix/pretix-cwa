@@ -1,6 +1,5 @@
 import cwa_qr
 import hashlib
-import re
 from datetime import timedelta
 from django.conf import settings
 from pretix.base.models import Event, SubEvent
@@ -8,8 +7,9 @@ from pytz import UTC
 
 
 def clean_address(a):
+    a = a.replace("\r\n", ", ")
+    a = a.replace("\r", ", ")
     a = a.replace("\n", ", ")
-    a = re.sub(r"[^ A-Za-z0-9.\-,]+", "", a)
     return a
 
 
