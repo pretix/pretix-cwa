@@ -15,7 +15,10 @@ class PluginApp(PluginConfig):
     class PretixPluginMeta:
         name = gettext_lazy("CWA integration")
         author = "pretix team"
-        description = gettext_lazy("Integrating pretix with the Corona Warn App (CWA) allows you to generate CWA event QR codes for your event on demand and email them to attendees after check-in.")
+        description = gettext_lazy(
+            "Integrating pretix with the Corona Warn App (CWA) allows you to generate CWA event QR codes for your "
+            "event on demand and email them to attendees after check-in."
+        )
         picture = "pretix_cwa/logo.svg"
         visible = True
         version = __version__

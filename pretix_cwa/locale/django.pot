@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 22:17+0200\n"
+"POT-Creation-Date: 2022-03-22 21:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,10 @@ msgid "CWA integration"
 msgstr ""
 
 #: pretix_cwa/__init__.py:18
-msgid "pretix integration for the Corona Warn App (CWA)"
+msgid ""
+"Integrating pretix with the Corona Warn App (CWA) allows you to generate CWA "
+"event QR codes for your event on demand and email them to attendees after "
+"check-in."
 msgstr ""
 
 #: pretix_cwa/forms.py:10
@@ -204,6 +207,6 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: pretix_cwa/templates/pretix_cwa/signage.html:16
+#: pretix_cwa/templates/pretix_cwa/signage.html:17
 msgid "Check in using Corona Warn App"
 msgstr ""
