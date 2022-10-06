@@ -36,7 +36,7 @@ setup(
     license="Apache",
     install_requires=[
         "qrcode",
-        "cwa-qr @ git+https://github.com/raphaelm/cwa-qr.git@protobuf4",  # see https://github.com/MaZderMind/cwa-qr/pull/16/files
+        "cwa-qr>=1.2.2",
     ],
     packages=find_packages(exclude=["tests", "tests.*"]),
     include_package_data=True,
