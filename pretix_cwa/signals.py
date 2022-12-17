@@ -1,6 +1,6 @@
 from django.dispatch import receiver
 from django.urls import resolve, reverse
-from django.utils.translation import gettext_noop, ugettext_lazy as _
+from django.utils.translation import gettext_noop, gettext_lazy as _
 from i18nfield.strings import LazyI18nString
 from pretix.base.email import SimpleFunctionalMailTextPlaceholder
 from pretix.base.settings import settings_hierarkey
