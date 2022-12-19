@@ -8,6 +8,7 @@ except ImportError:
 
 
 class PluginApp(PluginConfig):
+    default = True
     name = "pretix_cwa"
     verbose_name = "CWA integration"
 
