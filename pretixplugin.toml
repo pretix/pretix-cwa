@@ -6,5 +6,5 @@ marketplace_name = "cwa"
 pypi = true
 repository_servers = { origin = "github.com", gitlab = "code.rami.io" }
 tag_targets = [ "origin", "gitlab" ]
-branch_targets = [ "origin/master", "gitlab/master", "f:gitlab/pypi" ]
+branch_targets = [ "origin/main", "gitlab/main", "f:gitlab/pypi" ]
 
