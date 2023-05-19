@@ -1,0 +1,44 @@
+[project]
+name = "pretix-cwa"
+dynamic = ["version"]
+description = "pretix integration for the Corona Warn App (CWA)"
+readme = "README.rst"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+keywords = ["pretix"]
+authors = [
+    {name = "pretix team", email = "support@pretix.eu"},
+]
+maintainers = [
+    {name = "pretix team", email = "support@pretix.eu"},
+]
+
+dependencies = [
+    "qrcode",
+    "cwa-qr>=1.2.2",
+]
+
+[project.entry-points."pretix.plugin"]
+pretix_cwa = "pretix_cwa:PretixPluginMeta"
+
+[project.entry-points."distutils.commands"]
+build = "pretix_plugin_build.build:CustomBuild"
+
+[build-system]
+requires = [
+    "setuptools",
+    "pretix-plugin-build",
+]
+
+[project.urls]
+homepage = "https://github.com/pretix/pretix-cwa"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "pretix_cwa.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["pretix*"]
+namespaces = false
