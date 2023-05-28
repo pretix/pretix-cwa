@@ -1,4 +1,5 @@
 from django.utils.translation import gettext_lazy
+
 from . import __version__
 
 try:
@@ -28,5 +29,3 @@ class PluginApp(PluginConfig):
 
     def ready(self):
         from . import signals  # NOQA
-
-
