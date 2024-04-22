@@ -10,7 +10,6 @@ except ImportError:
 
 class PluginApp(PluginConfig):
     default = True
-    default = True
     name = "pretix_cwa"
     verbose_name = "CWA integration"
 
@@ -18,7 +17,7 @@ class PluginApp(PluginConfig):
         name = gettext_lazy("CWA integration")
         author = "pretix team"
         description = gettext_lazy(
-            "Integrating pretix with the Corona Warn App (CWA) allows you to generate CWA event QR codes for your "
+            "PLUGIN WILL BE REMOVED AFTER 05/2024. Integrating pretix with the Corona Warn App (CWA) allows you to generate CWA event QR codes for your "
             "event on demand and email them to attendees after check-in."
         )
         picture = "pretix_cwa/logo.svg"
